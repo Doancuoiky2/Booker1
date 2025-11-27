@@ -1,0 +1,79 @@
+.change-password-page {
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+.change-password-page h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+.change-password-page p {
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.change-password-form {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    width: 55%;
+}
+
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-field label {
+    font-size: 15px;
+    color: #727272;
+    display: block;
+    width: 200px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #555;
+    font-size: 17px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+
+.submit-buttonn {
+    width: 30%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #f25822;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-buttonn:hover {
+    background-color: #d79333;
+}

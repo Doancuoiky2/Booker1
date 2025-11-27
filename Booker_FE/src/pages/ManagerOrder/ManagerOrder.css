@@ -1,0 +1,111 @@
+.productbtn-item_updateInfo {
+  width: 22%;
+}
+.productbtn-item_updateInfo2 {
+  width: 18%;
+}
+
+.productbtn-item_update {
+  width: 300px;
+  margin-top: -30px;
+}
+
+.product-search_listSearch {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.no-hover {
+  pointer-events: none;
+}
+
+.btn2 span {
+  color: #717171;
+}
+
+.table-container tbody tr {
+  height: 70px !important;
+}
+
+.xacnhan {
+  font-size: 1.5rem;
+  color: white !important;
+  background-color: rgb(51, 165, 95) !important;
+  padding: 5px 10px !important;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.huydon {
+  font-size: 1.5rem;
+  color: white !important;
+  background-color: rgb(207, 33, 33) !important;
+  padding: 5px 10px !important;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.huydon:hover {
+  color: white !important;
+  background-color: rgb(207, 33, 33) !important;
+  cursor: default !important;
+}
+.dangvanchuyen {
+  font-size: 1.5rem;
+  color: white !important;
+  background-color: rgb(73, 202, 241) !important;
+  padding: 5px 10px !important;
+  margin-left: 10px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+.dagiao {
+  font-size: 1.5rem;
+  color: #fff !important;
+  background-color: #ffb957 !important;
+  padding: 5px 10px !important;
+  margin-left: 10px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+.trahang {
+  font-size: 1.5rem;
+  color: white !important;
+  background-color: rgb(221, 82, 27) !important;
+  padding: 5px 10px !important;
+  margin-left: 10px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.flex-right {
+  float: right;
+}
+
+.productbtn-list--form,
+.productbtn-list--form2 {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.productbtn-list--form2 {
+  justify-content: right;
+}
+
+.productbtn-item--update {
+  width: 30%;
+}
+
+.product-item--earning {
+  width: 35%;
+  height: auto;
+  background-color: aliceblue;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 0 20px;
+  border-radius: 5px;
+}
+
+.product-item--earning p {
+  font-size: 1.7rem;
+}

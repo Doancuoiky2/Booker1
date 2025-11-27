@@ -1,0 +1,336 @@
+.donHangChiTietMain {
+}
+.donHangChiTietHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed rgb(192, 190, 190);
+}
+.donHangChiTietHeaderBack {
+  display: flex;
+  cursor: pointer;
+}
+.donHangChiTietHeader h3 {
+  font-size: 15px;
+  margin-top: 1px;
+}
+.donHangChiTietHeaderBack h3 {
+  margin-left: 5px;
+  color: rgb(168, 167, 167);
+}
+.donHangChiTietHeaderInfo {
+  display: flex;
+}
+.donHangChiTietHeaderBackIcon {
+  font-size: 18px;
+  color: rgb(168, 167, 167);
+}
+.donHangChiTietHeaderInfo h3:nth-child(1) {
+  margin-right: 12px;
+}
+.donHangChiTietHeaderInfo h3:nth-child(2) {
+  margin-left: 12px;
+  color: #fc5930;
+  text-transform: uppercase;
+}
+
+.timelineContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  padding: 30px 0;
+}
+
+/* Line nền */
+.timelineLine {
+  position: absolute;
+  top: 60px; /* căn đúng giữa icon */
+  left: 50%;
+  transform: translateX(-50%) ;
+  width: 85%;
+  height: 3px;
+  background-color: #ccc;
+  z-index: 1;
+}
+
+/* Line active */
+.timelineLineActive {
+  position: absolute;
+  top: 60px;
+  left: 7%;
+  width: 85%;
+  height: 3px;
+  background-color: #34c759;
+  z-index: 2;
+  transition: width 0.4s ease;
+}
+
+.timelineStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  z-index: 3;
+}
+
+/* Vòng tròn */
+.circle {
+  width: 65px;
+  height: 65px;
+  border: 3px solid #34c759;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #34c759;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.circle svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+}
+
+.active {
+  background-color: #34c759;
+  color: white;
+}
+
+.timelineStep p {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #333;
+  width: 130px;
+  line-height: 1.4;
+}
+
+.lineBeauti {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #6fa6d6,
+    #6fa6d6 33px,
+    transparent 0,
+    transparent 41px,
+    #f18d9b 0,
+    #f18d9b 74px,
+    transparent 0,
+    transparent 82px
+  );
+  background-position-x: -1.875rem;
+  background-size: 7.25rem 0.1875rem;
+  height: 0.1875rem;
+  width: 104.4%;
+  margin-left: -20px;
+}
+
+.donHangChiTietButtonItem {
+  margin-left: -20px;
+  width: 104.4%;
+  border-top: 1px dashed gray;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fffcf5;
+}
+
+.donHangChiTietButtonItem p {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.donHangChiTietButtonItem button {
+  font-size: 15px;
+  width: 200px;
+  padding: 10px 0;
+  border-radius: 7px;
+}
+
+.donHangChiTietButtonItem:nth-child(1) button {
+  color: #fff;
+  background-color: #fc5930;
+}
+
+.donHangChiTietButtonItem:nth-child(2) button {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid rgba(189, 189, 189, 0.596) !important;
+}
+.donHangChiTiet_diaChi {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+.donHangChiTiet_diaChiUser {
+  width: 40%;
+  border-right: 1px solid rgba(189, 189, 189, 0.521);
+}
+.donHangChiTiet_diaChiUser h2 {
+  margin-bottom: 20px;
+}
+.donHangChiTiet_diaChiUserP {
+  font-size: 14px;
+  color: gray;
+}
+.donHangChiTiet_diaChiUserName {
+  font-size: 17px;
+  color: black !important;
+  margin-bottom: 10px;
+}
+.donHangChiTiet_diaChiVanChuyen {
+  width: 60%;
+}
+
+.donHangChiTiet_sanPham {
+  background-color: #fafafa;
+  width: 104.4%;
+  margin-left: -20px;
+  padding: 20px;
+}
+.donHangChiTiet_sanPhamShop {
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.donHangChiTiet_sanPhamInfo {
+  border-top: 1px dashed gray;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.donHangChiTiet_sanPhamInfoImg {
+  width: 12%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid rgba(194, 194, 194, 0.582);
+}
+
+.donHangChiTiet_sanPhamInfoImg img {
+  width: 100%;
+  height: 100%;
+}
+
+.donHangChiTiet_sanPhamInfoName {
+  width: 70%;
+}
+
+.donHangChiTiet_sanPhamInfoName h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.donHangChiTiet_sanPhamInfoName p {
+  font-size: 16px;
+}
+
+.donHangChiTiet_sanPhamInfoNameTheloai {
+  color: gray;
+  margin-top: 10px;
+}
+
+.donHangChiTiet_sanPhamInfoNameIcon {
+  font-size: 10px;
+}
+
+.donHangChiTiet_sanPhamInfoMoney {
+  width: 15%;
+}
+
+.donHangChiTiet_sanPhamInfoMoney p {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #ed5030;
+}
+
+.order_summary {
+  margin-left: -20px;
+  width: 104.4%;
+  /* background-color: #fafafa; */
+}
+
+.order_summaryCol {
+  border-top: 1px dashed rgba(173, 173, 173, 0.521);
+  display: flex;
+  justify-content: space-between;
+  padding-right: 40px;
+  align-items: center;
+  font-size: 15px;
+}
+.order_summaryCol2{
+  border-bottom: 1px dashed rgba(173, 173, 173, 0.521);
+  display: flex;
+  justify-content: space-between;
+  padding-right: 40px;
+  align-items: center;
+  font-size: 15px;
+}
+.order_summaryCol p ,
+.order_summaryCol2 p {
+  border-right: 1px dashed gray;
+  padding-right: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  width: 75%;
+  display: flex;
+  justify-content: right;
+  padding: 10px 20px;
+}
+
+.order_summaryCol span ,
+.order_summaryCol2 span {
+  padding-left: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  width: 25%;
+  display: flex;
+  justify-content: right;
+}
+
+.order_summarySum{
+  font-size: 22px;
+  color: #ed5030;
+}
+
+.order_summaryThongBao{
+  border: 1px solid #e4bb79;
+  background-color: #fffefa;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.order_summaryThongBaoIcon{
+  border: 1px solid #e4bb79;
+  border-radius: 50%;
+  color: #e4bb79;
+  padding: 2px 3px;
+  margin-right: 10px;
+}
+
+.order_summaryThongBao p{
+  font-size: 14px;
+  color: #333;
+}
+
+.order_summaryThongBao p > span {
+  color: #ed5030;
+  font-size: 16px;
+}

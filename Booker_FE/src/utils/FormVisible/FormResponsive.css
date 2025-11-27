@@ -1,0 +1,79 @@
+/* responsive BookForm */
+/* Laptop */
+@media screen and (max-width: 1599px) {
+  .addnewbook {
+    width: 80%;
+    height: 82%;
+    font-size: 16px;
+  }
+
+  .addnewbook-form_img {
+    width: 23%;
+    max-height: 388px;
+    object-fit: cover;
+  }
+
+  .custom-file-input {
+    margin-left: 80px;
+  }
+
+  .addnewbook-form_img span {
+    margin-left: 65px;
+  }
+
+  .voucher-form {
+    margin-top: 20px;
+  }
+
+  .voucher-info {
+    position: absolute;
+    top: 300px;
+    margin-left: 3px;
+    background-color: #fff;
+    width: 687px;
+    border-radius: 10px;
+    height: auto;
+    padding: 0 20px;
+  }
+
+  .reply input {
+    width: 77%;
+  }
+
+  .reply button {
+    right: 50px;
+  }
+
+  .last-buyer-message {
+    width: 200px !important;
+  }
+
+  /* .backtoComment{
+    margin-right: 15px;
+  } */
+
+}
+
+/* PC màn lớn */
+@media screen and (min-width: 1600px) {
+  .addnewbook {
+    width: 70%; /* Giảm lại cho gọn */
+    height: 70%;
+    font-size: 18px;
+  }
+
+  .custom-file-input {
+    margin-left: 105px;
+  }
+
+  .addnewbook-form_btn button {
+    padding: 0 !important;
+    width: 240px;
+    height: 40px;
+  }
+
+  .scroll-container3 {
+    width: 1150px;
+    max-height: 800px;
+  }
+}

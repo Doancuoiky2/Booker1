@@ -1,0 +1,14 @@
+.breadcrumb {
+  display: flex;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.breadcrumbItem{
+  /* margin-left: 10px; */
+  margin-right: 10px;
+}
+.breadcrumbItemSpace {
+  margin-left: 10px;
+  margin-right: 10px !important;
+}
+

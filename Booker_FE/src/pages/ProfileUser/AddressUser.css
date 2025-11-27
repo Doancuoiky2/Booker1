@@ -1,0 +1,158 @@
+.address-page {
+    /* padding: 20px; */
+
+    font-family: Arial, sans-serif;
+    /* max-width: 900px; */
+    width: 100%;
+    /* margin: 0 auto; */
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.address-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.add-address-button {
+    background-color: #ed4d2d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-address-button:hover {
+    background-color: #ff6b6b;
+}
+
+.address-list .address-item {
+    background-color: #ffeee79d;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid #f47157d0;
+    font-size: 17px;
+}   
+
+.address-item p {
+    margin: 5px 0;
+    color: #ed4d2d;
+}
+
+.default-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+   
+}
+
+.address-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.update-action,
+.delete-action {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.new-address-form {
+    /* padding: 20px; */
+    border-radius: 4px;
+    max-width: 600px;   
+    margin: 0 auto;
+}
+
+.new-address-form h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.default-checkbox {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.default-checkbox span{
+    margin-left: 10px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.back-button {
+    background-color: #ddd;
+    color: #333;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    background-color: #bbb;
+}
+
+.submit-button {
+    background-color: #ed4d2d !important;
+    color: white;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.submit-button:hover {
+    background-color: #d88b1f;
+}
+.user-info{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.user-info p{
+    color: red;
+}

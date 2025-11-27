@@ -1,0 +1,146 @@
+.timeline-wrapper {
+  padding: 0 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  max-width: 650px;
+  margin: auto;
+}
+
+.timeline-wrapper h3{
+    margin-bottom: 20px ;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* Mỗi item */
+.timeline-item {
+  display: flex;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.timeline-left {
+  position: relative;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Line nối giữa các chấm */
+.timeline-connector {
+  flex-grow: 1;
+  width: 2px;
+  background: #e5e7eb;
+  margin-top: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animation line màu */
+.timeline-item.active .timeline-connector::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #0ea5a4;
+  animation: growLine 1.2s ease forwards;
+}
+
+@keyframes growLine {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+/* Dot */
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #cfcfcf;
+  position: relative;
+  z-index: 2;
+}
+
+/* Dot active */
+.timeline-dot.active {
+  background-color: #0ea5a4;
+  border-color: #0ea5a4;
+  box-shadow: 0 0 0 4px rgba(14, 165, 164, 0.1);
+  animation: popDot 0.4s ease;
+}
+
+@keyframes popDot {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Nội dung bên phải */
+.timeline-right {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.timeline-right .time {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.timeline-right .status {
+  font-weight: 600;
+  color: #0ea5a4;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.timeline-item:not(.active) .status {
+  color: #374151;
+}
+
+.timeline-right .message {
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.timeline-right .extra {
+  color: #0284c7;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.timeline-right .extra:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .timeline-wrapper {
+    padding: 12px;
+  }
+  .timeline-right .time {
+    font-size: 12px;
+  }
+  .timeline-right .status {
+    font-size: 14px;
+  }
+}
+

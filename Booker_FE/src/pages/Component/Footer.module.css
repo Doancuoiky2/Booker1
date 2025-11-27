@@ -1,0 +1,132 @@
+input {
+  outline: none;
+}
+
+.footer {
+  background-color: rgb(244, 244, 244);
+  padding: 20px 0px 0 0 ;
+  border-top: 1px solid #ccc;
+  width: 1200px;
+  margin: 20px auto 0;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* padding: 0 20px; */
+}
+
+.footerColumn {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.footerColumn h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.footerColumn ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footerColumn ul li {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.footerColumn ul li:hover{
+    color: #dd6039;
+    padding: 0 0 0 10px;
+}
+
+.footerColumn ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* phần giới thiệu về Booker */
+.footerIntroduce h3 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footerIntroduce > p {
+  font-size: 15px;
+  margin-bottom: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.bantin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50px 20px 70px;
+}
+
+.bantinImg {
+  width: 15%;
+}
+.bantinText {
+  width: 30%;
+}
+
+.bantinText h3 {
+  font-style: 24px;
+  font-weight: 600;
+  color: #dd6039;
+  font-family: "Montserrat", sans-serif;
+}
+
+.bantinText p {
+  font-size: 14px;
+}
+
+.bantinInp {
+  width: 45%;
+  /* padding: 10px; */
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.bantinInp input{
+    padding: 10px;
+    width: 80%;
+}
+.bantinInp button{
+    padding: 10px;
+    width: 20%;
+    background-color: #dd6039;
+    color: white;
+    transition: all .2s ease-in-out;
+}
+.bantinInp button:hover{
+    background-color: #d6481c;
+}
+
+.social > p {
+    font-size: 16px !important;
+    margin-top: 10px;
+}
+
+.social {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.iconSocial{
+    margin-left: 10px;
+     margin-top: 10px;
+}
+

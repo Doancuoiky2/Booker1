@@ -1,0 +1,280 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import HeaderUser from "../Component/HeaderUser";
+import FooterUser from "../Component/FooterUser";
+import "./HomeCart.css";
+import styles from "../Home/HomeUser.module.css";
+import { faPlus, faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+
+const ShoppingCart = () => {
+  const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+  };
+
+  useEffect(() => {
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+      // fetchWalletBalance(storedUser.id_tai_khoan);
+    }
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    if (user) {
+      const cartKey = `cart_${user.id_tai_khoan}`;
+      const savedCart = JSON.parse(localStorage.getItem(cartKey)) || [];
+      setCart(savedCart);
+    }
+  }, []);
+
+  const updateCartInLocalStorage = (updatedCart) => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const cartKey = `cart_${user.id_tai_khoan}`;
+    localStorage.setItem(cartKey, JSON.stringify(updatedCart));
+  };
+
+  const handleQuantityChange = (productId, change) => {
+    const updatedCart = cart.map((item) => {
+      if (item.ma_san_pham === productId) {
+        const newQuantity = item.so_luong + change;
+
+        // Kiểm tra điều kiện sản phẩm còn hàng
+        if (newQuantity > item.con_hang) {
+          NotificationManager.warning(
+            `Sản phẩm "${item.ten_san_pham}" chỉ còn ${item.con_hang} sản phẩm.`,
+            ""
+          );
+          return item; // Giữ nguyên nếu vượt quá số lượng có sẵn
+        }
+
+        if (newQuantity > 0) {
+          return { ...item, so_luong: newQuantity };
+        }
+      }
+      return item;
+    });
+
+    setCart(updatedCart);
+    updateCartInLocalStorage(updatedCart);
+  };
+
+  const handleRemoveItem = (productId) => {
+    const updatedCart = cart.filter((item) => item.ma_san_pham !== productId);
+    setCart(updatedCart);
+    updateCartInLocalStorage(updatedCart);
+    window.location.reload();
+  };
+
+  const handleSelectItem = (productId) => {
+    const updatedCart = cart.map((item) =>
+      item.ma_san_pham === productId
+        ? { ...item, selected: !item.selected }
+        : item
+    );
+    setCart(updatedCart);
+    updateCartInLocalStorage(updatedCart);
+  };
+
+  const handleCheckout = () => {
+    const selectedItems = cart.filter((item) => item.selected); // Lấy các sản phẩm được chọn
+    if (selectedItems.length === 0) {
+      NotificationManager.warning(
+        "Vui lòng chọn ít nhất một sản phẩm để thanh toán.",
+        ""
+      );
+      return;
+    }
+
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const cartKey = `cart_${user.id_tai_khoan}`;
+
+    sessionStorage.setItem("checkoutItem", JSON.stringify(null));
+
+    localStorage.setItem("checkoutCart", JSON.stringify(selectedItems)); // Lưu sản phẩm tick vào localStorage
+    navigate("/checkout"); // Điều hướng đến trang Checkout
+  };
+
+  // Tính tổng tiền chỉ cho các sản phẩm được tick
+  const totalAmount = cart
+    .filter((item) => item.selected) // Chỉ tính những sản phẩm được tick
+    .reduce((total, item) => total + item.gia * item.so_luong, 0);
+
+  const totalProductSelect = cart.filter((item) => item.selected);
+  const numberProductSelect = totalProductSelect.length;
+
+  // Hàm chọn hoặc bỏ chọn ht sản phẩm có trong giỏ hàng
+  const handleToggleSelectAll = () => {
+    const allSelected = cart.every((item) => item.selected);
+    const updatedCart = cart.map((item) => ({
+      ...item,
+      selected: !allSelected,
+    }));
+    setCart(updatedCart);
+    updateCartInLocalStorage(updatedCart);
+  };
+
+  // Tự động xác định trạng thái nút "chọn tất cả"
+  const isAllSelected = cart.length > 0 && cart.every((item) => item.selected);
+
+  return (
+    <div className={styles.parent}>
+      <HeaderUser onSearchResults={handleSearchResults} />
+
+      <div className="cart-content">
+        {cart.length === 0 ? (
+          <div className="cart-content_no_product">
+            <p>Giỏ hàng của bạn đang trống</p>
+            <button onClick={() => navigate("/booker.vn")}>
+              Quay lại trang chủ
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="cart-content-head">
+              <p>Sản phẩm</p>
+              <p>Đơn giá</p>
+              <p>Số lượng</p>
+              <p>Số tiền </p>
+              <p>Thao tác</p>
+            </div>
+
+            {cart.map((product) => (
+              <div key={product.ma_san_pham} className="cart-product">
+                <div className="cart-product-store">
+                  <p>{product?.cua_hang?.ten_cua_hang}</p>
+                  <svg viewBox="0 0 16 16" class="shopee-svg-icon AxeMgG">
+                    <g fill-rule="evenodd">
+                      <path d="M15 4a1 1 0 01.993.883L16 5v9.932a.5.5 0 01-.82.385l-2.061-1.718-8.199.001a1 1 0 01-.98-.8l-.016-.117-.108-1.284 8.058.001a2 2 0 001.976-1.692l.018-.155L14.293 4H15zm-2.48-4a1 1 0 011 1l-.003.077-.646 8.4a1 1 0 01-.997.923l-8.994-.001-2.06 1.718a.5.5 0 01-.233.108l-.087.007a.5.5 0 01-.492-.41L0 11.732V1a1 1 0 011-1h11.52zM3.646 4.246a.5.5 0 000 .708c.305.304.694.526 1.146.682A4.936 4.936 0 006.4 5.9c.464 0 1.02-.062 1.608-.264.452-.156.841-.378 1.146-.682a.5.5 0 10-.708-.708c-.185.186-.445.335-.764.444a4.004 4.004 0 01-2.564 0c-.319-.11-.579-.258-.764-.444a.5.5 0 00-.708 0z"></path>
+                    </g>
+                  </svg>
+                </div>
+                <div className="cart-product-form">
+                  <div className="cart-product-info">
+                    <input
+                      type="checkbox"
+                      checked={product.selected || false}
+                      onChange={() => handleSelectItem(product.ma_san_pham)}
+                    />
+                    <div className="product-details">
+                      <img
+                        src={product.anh_san_pham}
+                        alt="Book cover"
+                        className="product-image2"
+                      />
+                      <div>
+                        <h3>{product.ten_san_pham}</h3>
+                        <p>Tác giả: {product.tac_gia}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="product-priceM">
+                    <p>₫{product.gia.toLocaleString("vi-VN")}</p>
+                    {/* <p>
+                      {product.gia_sol || 0}
+                      <img src="/images/solana.png" alt="solana.png"/>
+                    </p> */}
+                  </div>
+                  <div className="product-quantity">
+                    <div
+                      className="quantityWrapper"
+                      style={{ marginLeft: "20px" }}
+                    >
+                      <button
+                        className="quantityBtn"
+                        onClick={() =>
+                          handleQuantityChange(product.ma_san_pham, -1)
+                        }
+                      >
+                        <FontAwesomeIcon
+                          className="truhang"
+                          icon={faWindowMinimize}
+                        ></FontAwesomeIcon>
+                      </button>
+                      <input
+                        value={product.so_luong}
+                        min="1"
+                        // onChange={(e) => setQuantity(Number(e.target.value))}
+                        className="quantityInput"
+                        readOnly={true}
+                      />
+                      <button
+                        className="quantityBtn"
+                        onClick={() =>
+                          handleQuantityChange(product.ma_san_pham, 1)
+                        }
+                      >
+                        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+                      </button>
+                    </div>
+                  </div>
+                  <div className="product-thanhtien">
+                    <p>
+                      ₫
+                      {(product.gia * product.so_luong).toLocaleString("vi-VN")}
+                    </p>
+                    {/* <p>
+                      {(product.gia_sol * product.so_luong).toFixed(6)}
+                      <img src="/images/solana.png" alt="solana.png"/>
+                    </p> */}
+                  </div>
+                  <div className="product-thaotac">
+                    <button
+                      onClick={() => handleRemoveItem(product.ma_san_pham)}
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="cart-summary">
+              <div
+                className="cart-summary__checkbox"
+                onClick={handleToggleSelectAll}
+              >
+                <input type="checkbox" checked={isAllSelected} />
+                <p>Chọn tất cả ({cart.length})</p>
+              </div>
+              <div className="cart-summary__money">
+                <div>
+                  <p>Tổng cộng: {numberProductSelect} sản phẩm</p>
+                </div>
+                <div>
+                  <span>{totalAmount.toLocaleString("vi-VN")} ₫</span>
+
+                  {user?.trang_thai_tk === false && (
+                    <button
+                      style={{ fontSize: "16px" }}
+                      onClick={handleCheckout}
+                      className="checkout-button"
+                    >
+                      Mua Hàng
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      {cart.length === 0 ? (
+        <FooterUser />
+      ) : (
+        <div style={{ height: "200px" }}></div>
+      )}
+
+      <NotificationContainer />
+    </div>
+  );
+};
+
+export default ShoppingCart;

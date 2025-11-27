@@ -1,0 +1,202 @@
+[33mcommit cd3d7d3aa3780e74a03412855d39d6c77eb0b17c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Sun Nov 3 05:12:11 2024 +0700
+
+    thay đổi nhỏ hihi
+
+[33mcommit 589e5b8786da79103f14e9320252efd051f26fb9[m
+Merge: 165323f 64db021
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Fri Nov 1 08:15:05 2024 +0700
+
+    phan hoi danh gia cua nguoi mua
+
+[33mcommit 165323f12f5d6d09889b8666c3913d3c39ae3026[m
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Fri Nov 1 08:05:05 2024 +0700
+
+    phản hồi đánh giá của người dùng
+
+[33mcommit 64db0217ee6b4d70d48bc1158b43e7837c2a27c3[m
+Author: = <=>
+Date:   Wed Oct 30 22:03:16 2024 +0700
+
+    done 9 api nguoi ban
+
+[33mcommit 392fa37137c7bbd0d192aaddeebfacd4f8039049[m
+Merge: b09858f b081b14
+Author: quocvuvip <quocvuv123@gmail.com>
+Date:   Tue Oct 29 23:00:15 2024 +0700
+
+    donee admin
+
+[33mcommit b081b14e05c56eab1a1d726e7b4e59bc92541011[m
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Tue Oct 29 22:20:01 2024 +0700
+
+    voucher add api search
+
+[33mcommit b09858f6e7640d14bfc68ba3f3fab0036a33e741[m
+Author: quocvuvip <quocvuv123@gmail.com>
+Date:   Tue Oct 29 21:55:45 2024 +0700
+
+    thay đổi từ quocvu
+
+[33mcommit 2a447ab9253add49ce32a0d268237cce0f75bc72[m
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Mon Oct 28 08:02:11 2024 +0700
+
+    ko update
+
+[33mcommit 2b7cdd5da4d6e3709d8de05700e1f69751febcfb[m
+Author: = <=>
+Date:   Sat Oct 26 22:51:04 2024 +0700
+
+    tim kiem theo trang thai
+
+[33mcommit 1060f27750d80c67b613f0ecb5916881473eb366[m
+Author: = <=>
+Date:   Sat Oct 26 22:40:49 2024 +0700
+
+    lay danh sach san pham theo trang thai
+
+[33mcommit 6d52e2aebb5931577af7292220778cdec6ce5772[m
+Merge: bc121b5 a7e7a17
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Sat Oct 26 15:40:52 2024 +0700
+
+    Giải quyết xung đột và hoàn tất merge
+
+[33mcommit bc121b575583de4be3f090c10163d8bb12548a79[m
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Sat Oct 26 15:37:38 2024 +0700
+
+    thêm trạng thái cho sản phẩm và voucher
+
+[33mcommit a7e7a17594fadfe260618bd35dfc7a70da6854a1[m
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Fri Oct 25 13:07:24 2024 +0700
+
+    them thuoc tinh diem cua hang vs luot ban cua hang
+
+[33mcommit 5026be1b562ff0165cac888878503af24f1329df[m
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Thu Oct 24 15:36:40 2024 +0700
+
+    edit thuoc tinh voucher
+
+[33mcommit e801196df3174610f53e7ff82776d8494a0a2cc2[m
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Wed Oct 23 23:51:17 2024 +0700
+
+    trang thai san pham
+
+[33mcommit 18ea511f3cb32f480d0311e1d117618f09e77711[m
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Wed Oct 23 22:16:27 2024 +0700
+
+    trang thai voucher
+
+[33mcommit 5a9ad1538dc5373558c2b77b63ba580c3def3993[m
+Merge: e9da950 56e3ae8
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Wed Oct 23 21:21:30 2024 +0700
+
+    dd
+
+[33mcommit e9da9500050c99ea643634472200c9ff7ad88d42[m
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Wed Oct 23 21:20:08 2024 +0700
+
+    okkk
+
+[33mcommit 56e3ae86195a67bcfe63963568c05d05aa8f9425[m
+Author: NghiaTayTo <amazing010302@gmail.com>
+Date:   Wed Oct 23 21:19:18 2024 +0700
+
+    okla
+
+[33mcommit c73280c06ca7f8d29c91e265f686ab9adcc07aea[m
+Author: = <=>
+Date:   Wed Oct 23 14:23:34 2024 +0700
+
+    them trang thai khoa and duyet san pham
+
+[33mcommit c508102d04e5a7d3cf83ee96fd73804cb9ed7b05[m
+Author: = <=>
+Date:   Tue Oct 22 20:58:49 2024 +0700
+
+    done lay ra san pham ban chay
+
+[33mcommit e8fee84bd011b7b92997131702a80f9eec4e1bcf[m
+Author: = <=>
+Date:   Tue Oct 22 20:04:01 2024 +0700
+
+    sap xep san pham tu cao den thap
+
+[33mcommit 871fdab6a56fd205769e31365d19d74cf22bea77[m[33m ([m[1;31morigin/nghia[m[33m, [m[1;31morigin/kietle[m[33m)[m
+Author: = <=>
+Date:   Sun Oct 20 20:29:50 2024 +0700
+
+    them thuoc tinh anh san pham
+
+[33mcommit 28546c41a3457d979fd78943c1a944b64359625b[m
+Author: = <=>
+Date:   Wed Oct 16 12:27:25 2024 +0700
+
+    edit poi maven
+
+[33mcommit 68df3c36b72d115b6450d36a4824dc6e34d9e7d3[m
+Author: = <=>
+Date:   Wed Oct 16 01:32:15 2024 +0700
+
+    them xoa sua voucher
+
+[33mcommit 21330123f5972a9f0f38c95537e1392e96732840[m
+Author: = <=>
+Date:   Thu Oct 10 00:27:35 2024 +0700
+
+    them, sua, xoa, cap nhat, load, get by id
+
+[33mcommit 3aadbfd1e0edbc366d486716ee1a9ff296f89d81[m
+Author: = <=>
+Date:   Wed Oct 9 00:57:15 2024 +0700
+
+    done xuat file excel
+
+[33mcommit a0832b732e1642fcf4233c75bbe89c403fa7585b[m
+Author: = <=>
+Date:   Tue Oct 8 23:53:41 2024 +0700
+
+    chỉnh sửa các tác vụ của sản phẩm cửa hàng
+
+[33mcommit 11958317b1718d052934253c666f95e3fddf4d1e[m
+Merge: 296df31 0029446
+Author: = <=>
+Date:   Tue Oct 8 21:54:02 2024 +0700
+
+    m
+
+[33mcommit 296df313227fc56d7314f688b4ae811e391556ce[m
+Author: = <=>
+Date:   Tue Oct 8 21:48:37 2024 +0700
+
+    m
+
+[33mcommit bd320c4e28fec0fec9603b69cf0681ac68bc54e9[m
+Author: = <=>
+Date:   Tue Oct 8 21:41:17 2024 +0700
+
+    all
+
+[33mcommit 0029446bf2f9805e6d91094a695d590eef675090[m
+Author: Le Chau Kiet <lck.dev7014@gmail.com>
+Date:   Tue Oct 8 21:32:17 2024 +0700
+
+    chinh sưa va them thuoc tinh san pham
+
+[33mcommit ac4e799f6b3f62f7a64640a0b5edbdf99d07b8d1[m
+Author: = <=>
+Date:   Sun Oct 6 01:08:13 2024 +0700
+
+    quan li san pham: load, tao, update, xoa, search by ten, by ngay-tao, validation; tao san pham trung, tim ten ko thay tensp

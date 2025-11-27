@@ -1,0 +1,148 @@
+:root {
+  --primary-color: #4680fe;
+}
+
+.sidebarStyle {
+  width: 235px;
+  font-size: 1.5rem;
+  background-color: #ffffff;
+  margin-top: -10px;
+  overflow: auto;
+  z-index: 100;
+  border-top-right-radius: 5px;
+  font-family: "OpenSans", sans-serif;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.15);
+  /* height: 100%; */
+}
+
+.listStyle {
+  padding: 10px;
+}
+
+.listStyle li {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.itemStyle {
+  display: block;
+  width: 100%;
+  align-items: center;
+  padding: 12px 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.itemStyle-click {
+  color: white !important;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.color_white {
+  color: white !important;
+}
+
+.mr-5 {
+  width: 20px;
+  margin-right: 7px;
+}
+
+.faAngleDown {
+  float: right;
+  margin-top: 5px;
+}
+
+.submenu {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.3s ease-out;
+  background-color: transparent !important;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Khi menu con mở */
+.submenu-open {
+  display: block; /* Khi mở menu con sẽ chiếm không gian */
+}
+
+.mb-20 {
+  margin-bottom: 30px;
+}
+
+.submenu a {
+  display: block;
+  width: 105.5%;
+  height: 45px;
+  border-bottom: 1px solid #dfdfdf;
+  display: flex;
+  align-items: center;
+}
+
+.submenuIcon {
+  margin-left: 30px;
+  color: rgb(98, 93, 93);
+  font-size: 12px;
+}
+
+.submenu-item p {
+  color: rgb(98, 93, 93);
+  transition: color 0.3s ease;
+  margin-left: 10px;
+}
+
+.submenu-item-active p {
+  color: var(--primary-color) !important;
+}
+
+.submenu-item-active > .submenuIcon {
+  color: var(--primary-color) !important;
+}
+
+.submenu-item:hover p,
+.submenu-item:hover .submenuIcon {
+  color: var(--primary-color) !important;
+}
+
+.bg_white {
+  background-color: white !important;
+  border-radius: 6px;
+  width: 226px !important;
+  margin-left: -13px;
+  margin-bottom: -10px;
+  display: block !important;
+}
+
+.sidebarStyleImg {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.sidebarStyleImg img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(71, 71, 71, 0.733);
+}
