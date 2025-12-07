@@ -65,11 +65,11 @@ const FooterUser = () => {
         <div className={styles.footerColumn}>
           <h4>HỖ TRỢ KHÁCH HÀNG</h4>
           <ul>
-            <li>Sản phẩm & Đơn hàng: 0933 109 009</li>
-            <li>Kỹ thuật & Bảo hành: 0989 439 986</li>
-            <li>Điện thoại: (028) 3820 7153 (giờ hành chính)</li>
+            <li>Sản phẩm & Đơn hàng: 0365 412 270</li>
+            <li>Kỹ thuật & Bảo hành: 0365 412 270</li>
+            <li>Điện thoại: 0365 412 270 (giờ hành chính)</li>
             <li>Email: info@booker.vn</li>
-            <li>Địa chỉ: 9 Lý Văn Phức, Tân Định, Q1, TP.HCM</li>
+            <li>Đà Nẵng</li>
             <li>Sơ đồ đường đi</li>
           </ul>
         </div>

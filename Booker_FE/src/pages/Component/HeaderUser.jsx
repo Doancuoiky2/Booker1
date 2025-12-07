@@ -279,7 +279,7 @@ const HeaderUser = ({ logout, onSearchResults, fixed }) => {
               icon={faPhoneAlt}
             />
             <div className={styles.floatL}>
-              <span className={styles.hotline}>0933 109 009</span>
+              <span className={styles.hotline}>0365 412 270</span>
               <span>Hotline</span>
             </div>
           </div>
