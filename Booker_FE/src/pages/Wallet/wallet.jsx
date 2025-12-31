@@ -1,92 +1,113 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './wallet.module.css';
 import axios from 'axios';
 import logo from '../Home/logoBooker.png';
 
-const RechargeForm = ({ onClose }) => {
+const RechargeForm = ({ onClose, onTransactionSuccess }) => {
     const [inputAmount, setInputAmount] = useState('');
     const [displayAmount, setDisplayAmount] = useState(0);
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState(0);
     const [isInvoiceVisible, setIsInvoiceVisible] = useState(false);
     const [imgSrc, setImgSrc] = useState('');
-    const [user, setUser] = useState(null);
     const [walletId, setWalletId] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [trans, setTrans] = useState(null);
-    const [previousTransactionCount, setPreviousTransactionCount] = useState(0); // Lưu số lượng giao dịch cũ
-    const [isCheckingTransactions, setIsCheckingTransactions] = useState(false); // Để kiểm tra trạng thái gọi API
 
+    const intervalRef = useRef(null);
+    const isSuccessRef = useRef(false); // CHỐNG CALL API VÔ HẠN
+
+    /* ===================== INIT ===================== */
     useEffect(() => {
         const storedUser = JSON.parse(sessionStorage.getItem('user'));
         if (storedUser) {
-            setUser(storedUser);
             fetchWalletId(storedUser.id_tai_khoan);
         }
+        return () => stopCheck();
     }, []);
 
     const fetchWalletId = async (userId) => {
-        try {
-            const response = await axios.get(`http://localhost:8080/api/v1/get-vi/${userId}`);
-            setWalletId(response.data.id_vi);
-        } catch (error) {
-            console.error('Lỗi khi lấy id ví:', error);
-        }
+        const res = await axios.get(`http://localhost:8080/api/v1/get-vi/${userId}`);
+        setWalletId(res.data.id_vi);
     };
 
+    /* ===================== INPUT ===================== */
     const handleInputChange = (e) => {
-        const value = e.target.value;
-        const numericValue = value.replace(/\D/g, ''); // Chỉ giữ lại số
-        setInputAmount(numericValue);
-        setAmount(numericValue)
-        setDisplayAmount(Number(numericValue));
-        setImgSrc(`https://apiqr.web2m.com/api/generate/ACB/12897891/LE%20CHAU%20KIET?amount=${numericValue}&memo=${walletId}&is_mask=0&bg=0`);
+        const value = e.target.value.replace(/\D/g, '');
+        setInputAmount(value);
+        setAmount(Number(value));
+        setDisplayAmount(Number(value));
+
+        setImgSrc(
+            `https://apiqr.web2m.com/api/generate/VCB/1016710155/NGO%20VO%20BINH%20MINH?amount=${value}&memo=${walletId}`
+        );
     };
 
-    const handleCreateInvoice = async () => {
-        if (displayAmount <= 0) {
-            setErrorMessage('Vui lòng nhập số tiền cần nạp.');
-            return;
-        } else if (displayAmount < 10000) {
-            setErrorMessage('Số tiền nạp phải từ 10.000 đ.');
+    /* ===================== CREATE INVOICE ===================== */
+    const handleCreateInvoice = () => {
+        if (displayAmount < 1000) {
+            setErrorMessage('Số tiền nạp tối thiểu 1.000đ');
             return;
         }
-        setIsInvoiceVisible(true);
-        setInputAmount('');
-        setDisplayAmount(0);
         setErrorMessage('');
-
-        // Lưu số lượng giao dịch cũ để so sánh sau này
-        try {
-            const response = await axios.get(`http://localhost:8080/api/v1/get-thanhtoan/${walletId}`);
-            setPreviousTransactionCount(response.data.transactions.length);
-        } catch (error) {
-            console.error('Lỗi khi lấy thông tin giao dịch:', error);
-        }
+        setIsInvoiceVisible(true);
     };
 
     const handleCloseInvoice = () => {
         setIsInvoiceVisible(false);
-        startTransactionCheck();
+        startCheck();
     };
 
-    // Kiểm tra giao dịch mỗi giây
-    const startTransactionCheck = () => {
-        setIsCheckingTransactions(true);
-        const intervalId = setInterval(async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/api/v1/get-thanhtoan/${walletId}`);
-                const currentTransactionCount = response.data.transactions.length;
+    /* ===================== CHECK TRANSACTION ===================== */
+    const startCheck = () => {
+        stopCheck();
+        isSuccessRef.current = false;
 
-                if (currentTransactionCount > previousTransactionCount) {
-                    // Giao dịch mới đã được thực hiện, dừng kiểm tra
-                    setIsCheckingTransactions(false);
-                    clearInterval(intervalId);
-                    setTrans(response);
+        intervalRef.current = setInterval(async () => {
+            if (isSuccessRef.current) return;
+
+            try {
+                const res = await axios.get(
+                    `http://localhost:8080/api/v1/get-thanhtoan/${walletId}`
+                );
+
+                const data =
+                    typeof res.data === 'string'
+                        ? JSON.parse(res.data)
+                        : res.data;
+
+                const transactions = data.transactions || [];
+
+                const matched = transactions.find(
+                    (t) =>
+                        t.type === 'IN' &&
+                        t.description &&
+                        t.description.includes(walletId)
+                );
+
+                if (matched) {
+                    console.log('✅ NẠP TIỀN THÀNH CÔNG');
+
+                    isSuccessRef.current = true;
+                    stopCheck();
+
+                    if (onTransactionSuccess) onTransactionSuccess();
+
+                    window.dispatchEvent(
+                        new CustomEvent('walletBalanceUpdated')
+                    );
+
+                    setTimeout(() => onClose(), 1200);
                 }
-            } catch (error) {
-                console.error('Lỗi khi kiểm tra giao dịch:', error);
+            } catch (err) {
+                console.error('Lỗi check giao dịch:', err);
             }
-        }, 1000); // Kiểm tra mỗi giây
+        }, 5000);
+    };
+
+    const stopCheck = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
     };
 
     return (
@@ -147,17 +168,17 @@ const RechargeForm = ({ onClose }) => {
                                 <div>
                                     <i className="fa-solid fa-building-columns"></i> Ngân hàng:
                                 </div>
-                                <span className={styles.bank} type="text">ACB</span>
+                                <span className={styles.bank} type="text">TCB</span>
                                 <hr />
                                 <div>
                                     <i className="fa-solid fa-credit-card"></i> Số tài khoản:
                                 </div>
-                                <span style={{ color: 'rgb(255, 204, 0)' }}>12897891</span>
+                                <span style={{ color: 'rgb(255, 204, 0)' }}>1016710155 </span>
                                 <hr />
                                 <div>
                                     <i className="fa-solid fa-user"></i> Chủ tài khoản:
                                 </div>
-                                <span>Lê Châu Kiệt</span>
+                                <span>Ngô Võ Bình Minh</span>
                                 <hr />
                                 <div>
                                     <i className="fa-solid fa-money-bill"></i> Số tiền thanh toán:

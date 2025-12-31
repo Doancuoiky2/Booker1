@@ -53,6 +53,19 @@ public class ViServiceImpl implements ViService {
         viDao.save(vi);
     }
 
+    @Override
+    @Transactional
+    public void congTien(String idVi, float amount) {
+        // Tìm ví dựa trên idVi
+        Vi vi = viDao.findById(idVi)
+                .orElseThrow(() -> new IllegalArgumentException("Ví không tồn tại với id: " + idVi));
 
+        // Cộng tiền
+        float currentBalance = vi.getSo_tien() != null ? vi.getSo_tien() : 0f;
+        vi.setSo_tien(currentBalance + amount);
+
+        // Cập nhật lại ví
+        viDao.save(vi);
+    }
 
 }

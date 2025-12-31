@@ -44,6 +44,22 @@ const HeaderUser = ({ logout, onSearchResults, fixed }) => {
       setUser(storedUser);
       fetchWalletBalance(storedUser.id_tai_khoan);
     }
+
+    // Lắng nghe sự kiện cập nhật số dư ví
+    const handleWalletBalanceUpdate = () => {
+      // Lấy user mới nhất từ sessionStorage mỗi lần để tránh closure issues
+      const currentUser = JSON.parse(sessionStorage.getItem("user"));
+      if (currentUser) {
+        console.log('🔄 Nhận event walletBalanceUpdated, đang refresh wallet balance...');
+        fetchWalletBalance(currentUser.id_tai_khoan);
+      }
+    };
+
+    window.addEventListener('walletBalanceUpdated', handleWalletBalanceUpdate);
+
+    return () => {
+      window.removeEventListener('walletBalanceUpdated', handleWalletBalanceUpdate);
+    };
   }, []);
 
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.so_luong, 0);
@@ -53,7 +69,9 @@ const HeaderUser = ({ logout, onSearchResults, fixed }) => {
       const response = await axios.get(
         `http://localhost:8080/api/v1/get-vi/${userId}`
       );
-      setWalletBalance(response.data.so_tien);
+      const newBalance = response.data.so_tien;
+      setWalletBalance(newBalance);
+      console.log('✅ Đã cập nhật wallet balance:', newBalance);
     } catch (error) {
       console.error("Lỗi khi lấy số dư ví:", error);
     }
@@ -392,7 +410,15 @@ const HeaderUser = ({ logout, onSearchResults, fixed }) => {
 
       {/* Modal cho Form Nạp Tiền */}
       {showRechargeForm && (
-        <RechargeForm onClose={() => setShowRechargeForm(false)} />
+        <RechargeForm 
+          onClose={() => setShowRechargeForm(false)} 
+          onTransactionSuccess={() => {
+            // Refresh wallet balance khi có giao dịch thành công
+            if (user) {
+              fetchWalletBalance(user.id_tai_khoan);
+            }
+          }}
+        />
       )}
 
       <NotificationContainer />
